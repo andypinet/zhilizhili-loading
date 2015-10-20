@@ -1,0 +1,23 @@
+{
+  "name": "package",
+  "version": "0.0.0",
+  "private": true,
+  "keywords": [
+    "web-components",
+    "polymer",
+    "behavior"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "gsap": "https://github.com/greensock/GreenSock-JS.git#~1.18.0",
+    "es6-shim": "~0.33.6",
+    "velocity": "~1.2.3"
+  },
+  "devDependencies": {
+    "paper-styles": "polymerelements/paper-styles#^1.0.2",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "*",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

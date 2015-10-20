@@ -1,0 +1,281 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--<link rel="import" href="bower_components/polymer/polymer.html">-->
+
+<dom-module id="zhilizhili-loading">
+    <template>
+        <style>
+            :host {
+                position: relative;
+                display: block;
+                overflow: hidden;
+            }
+
+            :host .zhilizhili-loading-wrapper {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <div class="layout vertical center-center zhilizhili-loading-wrapper">
+            <div class="loading-content" id="loadingContent">
+                <template is="dom-repeat" items="{{images}}">
+                    <img src="{{item.src}}" alt="">
+                </template>
+            </div>
+            <div class="loading-text" id="loading-text">
+                <content></content>
+            </div>
+        </div>
+    </template>
+    <script>
+        (function() {
+            'use strict';
+
+            Polymer({
+                is: 'zhilizhili-loading',
+
+                ready: function() {
+                    var self = this;
+                    self.imgpath = 'assets/img/';
+                    self.images = [
+                        {
+                            name: 'onpu0',
+                            type: 'png'
+                        },
+                        {
+                            name: 'onpu1',
+                            type: 'png'
+                        },
+                        {
+                            name: 'onpu2',
+                            type: 'png'
+                        },
+                        {
+                            name: 'onpu3',
+                            type: 'png'
+                        },
+                        {
+                            name: 'onpu4',
+                            type: 'png'
+                        },
+                        {
+                            name: 'onpu5',
+                            type: 'png'
+                        },
+                        {
+                            name: 'onpu6',
+                            type: 'png'
+                        }                                                                 
+                    ];
+                    self.handlerImage();
+                    self.async(function(){
+                        self.animateImage();                            
+                    }, 1);
+                },
+
+                handlerImage: function() {
+                    var self= this;
+                    self.images.forEach(function(image, index){
+                        image.src = self.imgpath + image.name + '.' + image.type;                           
+                    });
+                },
+
+                animateImage: function() {
+                    var self = this;
+                    self.imagesDom = Polymer.dom(self.$.loadingContent).querySelectorAll('img');
+                    var aniProps = [
+                        {
+                            duration: 0.6,
+                            from: {
+                                opacity: 0,
+                                scale: 0.5,
+                                delay: 0,
+                                rotation: 60
+                            }
+                        },
+                        {
+                            duration: 0.6,
+                            from: {
+                                opacity: 0,
+                                scale: 0.5,
+                                delay: 0.3,
+                                rotation: 40
+                            }                            
+                        },
+                        {
+                            duration: 0.6,
+                            from: {
+                                opacity: 0,
+                                scale: 0.5,
+                                delay: 0.6,
+                                rotation: 20
+                            }                            
+                        },
+                        {
+                            duration: 0.6,
+                            from: {
+                                opacity: 0,
+                                scale: 0.5,
+                                delay: 0.9,
+                                rotation: -20
+                            }                            
+                        },
+                        {
+                            duration: 0.6,
+                            from: {
+                                opacity: 0,
+                                scale: 0.5,
+                                delay: 1.2,
+                                rotation: -40
+                            }                            
+                        },
+                        {
+                            duration: 0.6,
+                            from: {
+                                opacity: 0,
+                                scale: 0.5,
+                                delay: 1.5,
+                                rotation: -60
+                            }                            
+                        },
+                        {
+                            duration: 0.6,
+                            from: {
+                                opacity: 0,
+                                scale: 0.5,
+                                delay: 1.8,
+                                rotation: -80
+                            }                            
+                        }                                                                 
+                    ];         
+
+                    var mainTl = new TimelineMax({repeat: -1, repeatDelay: 0});
+
+                    function getRandom(min, max) {
+                      return min + Math.random() * (max - min);
+                    }
+
+                    self.imagesDom.forEach(function(image, index) {
+                        var delay = getRandom(0.3, 0.5);
+                        var boxTl = new TimelineMax();
+
+                        boxTl.from(image, aniProps[index].duration, aniProps[index].from);
+                    });                                        
+
+                    setTimeout(function() {
+                        self.imagesDom.forEach(function(image, index) {
+                            var delay = getRandom(0, 0.3);
+                            var boxTl = new TimelineMax({delay: delay});
+
+                            var height = getRandom(10, 20);
+
+                            boxTl.from(image, 1, {
+                                y: '-=' + height
+                            }).to(image, aniProps[index].duration, {
+                                y: '-=' + height
+                            })
+
+                            mainTl.add(boxTl, '0');
+                        });
+                    }, 0);
+
+                    setTimeout(function(){
+                        mainTl.kill();
+
+                        var aniProps = [
+                            {
+                                duration: 0.83,
+                                to: {
+                                    opacity: 0,
+                                    scale: 5,
+                                    x: '-=300',
+                                    y: '-=100'
+                                }
+                            },
+                            {
+                                duration: 0.83,
+                                to: {
+                                    opacity: 0,
+                                    scale: 5,
+                                    x: '-=200',
+                                    y: '+=100'
+                                }
+                            },
+                            {
+                                duration: 0.83,
+                                to: {
+                                    opacity: 0,
+                                    scale: 5,
+                                    x: '-=100',
+                                    y: '-=140'
+                                }
+                            },
+                            {
+                                duration: 0.83,
+                                to: {
+                                    opacity: 0,
+                                    scale: 5,
+                                    x: '0',
+                                    y: '+=140'
+                                }
+                            },
+                            {
+                                duration: 0.83,
+                                to: {
+                                    opacity: 0,
+                                    scale: 5,
+                                    x: '+=100',
+                                    y: '-=100'
+                                }
+                            },
+                            {
+                                duration: 0.83,
+                                to: {
+                                    opacity: 0,
+                                    scale: 5,
+                                    x: '+=200',
+                                    y: '+=100'
+                                }
+                            },     
+                            {
+                                duration: 0.83,
+                                to: {
+                                    opacity: 0,
+                                    scale: 5,
+                                    x: '+=270',
+                                    y: '-=170'
+                                }
+                            },                                                    
+                        ];                        
+
+                        self.imagesDom.forEach(function(image, index) {
+                            var delay = getRandom(0, 0.5);
+                            var boxTl = new TimelineMax({delay: delay});
+
+                            boxTl.to(image, aniProps[index].duration, aniProps[index].to);
+                        });                    
+
+                    }, 9300);
+
+
+                        var t = new TimelineMax();
+
+
+                        t.to(self, 1.7, {
+                            opacity: 0,
+                            delay: 10
+                        });    
+
+                }
+            });
+        })();
+    </script>
+</dom-module>

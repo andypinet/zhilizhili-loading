@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+	<link rel="import" href="../bower_components/paper-styles/paper-styles.html">    
+	<script src="..//bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+	<script src="../bower_components/gsap/src/uncompressed/TimelineMax.js"></script>
+    <link rel="import" href="../zhilizhili-loading.html">
+	<script src="../bower_components/es6-shim/es6-shim.js"></script>
+    <style is="custom-style">
+    	body {
+    		margin: 0;
+    	}
+
+		zhilizhili-loading {
+			width: 100vw;
+			height: 100vh;
+			background-color: #0ba5eb;
+		}
+
+		zhilizhili-loading ::content .loading-content > img.zhilizhili-loading {
+			margin-left: 10px;
+			margin-right: 10px;
+			position: relative;
+		}
+
+		zhilizhili-loading ::content .loading-content > img.zhilizhili-loading:nth-child(odd) {
+			transform: translate3d(0, -20px, 0);
+		}
+
+		zhilizhili-loading ::content .loading-content > img.zhilizhili-loading:nth-child(even) {
+			transform: translate3d(0, 20px, 0);
+		}		
+
+		zhilizhili-loading ::content .loading-text {
+			margin-top: 40px;
+		}
+
+		zhilizhili-loading ::content .loading-text h3 {
+			font-size: 27px;
+			color: #ffffff;
+			letter-spacing: 7px;
+			font-family: Verdana;
+		}
+    </style>
+</head>
+<body>
+	<zhilizhili-loading>
+		<h3>关于我</h3>
+	</zhilizhili-loading>
+</body>
+<script>
+    window.onload = function() {
+    }
+</script>
+</html>
