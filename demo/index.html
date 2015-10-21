@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="IE=edge">    
     <title>Document</title>
-	<script src="../bower_components/supportoldbrower/check.js"></script>
+    <script>
+    window.oldBrowser = false;
+    if (!('content' in document.createElement('template'))) {
+        window.oldBrowser = true;
+    }
+    window.addEventListener('WebComponentsReady', function(){
+        if (document.querySelector('#polymer-support-oldbrowser')) {
+            document.querySelector('#polymer-support-oldbrowser').classList.add('webcomponents-ready');
+        }
+    });
+    </script>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../bower_components/polymer/polymer.html">
 	<link rel="import" href="../bower_components/paper-styles/paper-styles.html">    
@@ -76,6 +86,9 @@
 	<zhilizhili-loading id="loading" imgpath="assets/img/">
 		<h3>关于我</h3>
 	</zhilizhili-loading>		
+    <div class="polymer-support-oldbrowser" id="polymer-support-oldbrowser">
+        web components 正在努力加载中
+    </div>'   	
 </body>
 <script>
 </script>
