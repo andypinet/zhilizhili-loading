@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--<link rel="import" href="bower_components/polymer/polymer.html">-->
 
-<dom-module id="zhilizhili-loading">
+<dom-module id="zhilizhili-loading" imgpath="{{imgpath}}">
     <template>
         <style>
             :host {
@@ -42,9 +42,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             Polymer({
                 is: 'zhilizhili-loading',
 
+                properties: {
+                    imgpath: {
+                        type: String,
+                        value: ''
+                    }
+                },
+
                 ready: function() {
                     var self = this;
-                    self.imgpath = 'assets/img/';
                     self.images = [
                         {
                             name: 'onpu0',
