@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">    
     <title>Document</title>
+	<script src="../bower_components/supportoldbrower/check.js"></script>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../bower_components/polymer/polymer.html">
 	<link rel="import" href="../bower_components/paper-styles/paper-styles.html">    
@@ -46,14 +48,35 @@
 			font-family: Verdana;
 		}
     </style>
+    <style>
+		.polymer-support-oldbrowser {
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #c37bf7;
+			font-size: 30px;
+			color: #ffffff;
+			z-index: 10000;
+			transition: all 0.65s ease;
+		}
+
+		.webcomponents-ready {
+			opacity: 0;
+			z-index: -1;
+			background-color: transparent;
+		}
+    </style>
 </head>
 <body>
-	<zhilizhili-loading>
+	<zhilizhili-loading id="loading">
 		<h3>关于我</h3>
-	</zhilizhili-loading>
+	</zhilizhili-loading>		
 </body>
 <script>
-    window.onload = function() {
-    }
 </script>
 </html>

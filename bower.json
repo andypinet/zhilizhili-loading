@@ -1,6 +1,6 @@
 {
   "name": "zhilizhili-loading",
-  "version": "0.5.0",
+  "version": "0.7.3",
   "private": true,
   "keywords": [
     "web-components",
@@ -10,7 +10,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
     "gsap": "https://github.com/greensock/GreenSock-JS.git#~1.18.0",
-    "es6-shim": "~0.33.6"
+    "es6-shim": "~0.33.6",
+    "supportoldbrower": "git@github.com:andypinet/supportoldbrower.git#~0.5.0"
   },
   "devDependencies": {
     "paper-styles": "polymerelements/paper-styles#^1.0.2",
